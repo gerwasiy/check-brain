@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 15px 0px;
+}
+.container div{
+    margin: 0px 15px;
+}
+.title{
+color:#ff6600;
+font-weight: 500;
+}

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../styles/components/test-card.module.css'
+import styles from '../styles/components/test-card.module.scss'
 
 export default function TestCard({testName,description,path}) {
   return (

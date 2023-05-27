@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import Link from "next/link";
-import { useRouter } from 'next/router'
-
+import { useRouter } from "next/router";
+import styles from "../styles/components/auth.module.scss";
 
 export default function Login() {
   const emailRef = useRef();
@@ -10,7 +10,7 @@ export default function Login() {
   const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useRouter()
+  const history = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,39 +19,40 @@ export default function Login() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/Dashboard")
+      history.push("/");
     } catch {
       setError("Failed to log in");
     }
-
     setLoading(false);
   }
 
   return (
-    <>
-      <div className="form-container">
+    <div className={styles.auth__bg}>
+      <div className={styles.auth__form__container}>
         <h2>Log In</h2>
         {error && alert(error)}
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div id="email">
             <label>Email</label>
-            <input autoComplete="on" type="email" ref={emailRef} required />
+            <input type="email" ref={emailRef} required />
           </div>
           <div id="password">
             <label>Password</label>
-            <input autoComplete="on" type="password" ref={passwordRef} required />
+            <input type="password" ref={passwordRef} required />
           </div>
           <button disabled={loading} type="submit">
-            Log In 
+            Log In
           </button>
         </form>
-        <div>
-          <Link href="/ForgotPassword">Forgot Password?</Link>
-        </div>
-        <div>
-          Need an account? <Link href="/Signup">Sign Up</Link>
+        <div className={styles.auth__helper}>
+          <div>
+            <Link href="/ForgotPassword">Forgot Password?</Link>
+          </div>
+          <div>
+            Need an account? <Link href="/Signup">Sign Up</Link>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

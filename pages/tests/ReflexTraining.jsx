@@ -1,13 +1,15 @@
 import PrivateRoute from "../../components/PrivateRoute";
-import styles from "../../styles/components/reflex-training.module.css";
+import styles from "../../styles/components/reflex-training.module.scss";
 import Header from "../../components/header";
 import { useAuth } from "../../contexts/AuthContext";
 
 import { useState, useEffect, useRef } from "react";
+import Footer from "../../components/footer";
+import { faBrain } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function ReflexTraining() {
-  const defaultTime = 5;
+  const defaultTime = 3;
   const defaultScore = 0;
   const {currentUser} = useAuth();
   const [count, setCount] = useState(defaultScore);
@@ -78,7 +80,7 @@ export default function ReflexTraining() {
       <div className={styles.testOverContainer}>
         <div className={styles.userStatistic}>
           <h3 className={styles.statisticTitle}>
-            Congratulate {currentUser.email}
+            Congratulate {currentUser.displayName}
           </h3>
           <div>Your final score is {count}.</div>
           <div>Your best score is {count}.</div>
@@ -93,9 +95,12 @@ export default function ReflexTraining() {
 
   return (
     <PrivateRoute>
-      <Header />
+       <Header leftNavIcon={faBrain} leftNavName={'Tests'} leftNavPath={'/tests'}/>
 
       <div className={styles.page}>
+        <h2>
+        Тренування рефлексів
+        </h2>
         <div className={styles.testContainer}>
           {startTestBtn ? <div className={styles.mole} ref={moleRef}></div> : null}
           {testResult}
@@ -114,6 +119,7 @@ export default function ReflexTraining() {
           <div className={styles.timer}>Time left: {timeLeft}s</div>
         </div>
       </div>
+      <Footer/>
     </PrivateRoute>
   );
 }

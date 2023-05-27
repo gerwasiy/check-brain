@@ -1,7 +1,52 @@
-import Dashboard from './Dashboard';
+import Link from "next/link";
+import Footer from "../components/footer";
+import Header from "../components/header";
+
+const sectionsInfo_UA = [
+  {
+    title: "Про нас",
+    description: `Веб-видання "Перевір свій мозок" - це проект, створений з метою підвищення рівня освіти та розвитку пізнавальних здібностей користувачів інтернет мережі. Це інтерактивний сайт, який надає доступ до навчальних матеріалів та завдань, спрямованих на розвиток мозкових функцій.`,
+    path:'/About',
+    linkName:'Дізнатися більше. . .'
+  },
+  {
+    title:'Тести',
+    description:`У нас можна знайти різноманітні когнітивні вправи, головоломки та тести, які сприяють розвитку пам'яті, уваги, логічного мислення та інших когнітивних навичок. Ви можете проходити ці завдання, використовуючи свої навички та здібності.`,
+    path:'/tests',
+    linkName:'Перейти до тестів'
+  },
+  {
+    title:'Профіль',
+    description:'Увійдіть до свого особистого кабінету та налаштуйте свої особисті дані, щоб отримувати результати для відстеження своїх досягнень.',
+    path:'/Profile',
+    linkName:'Увійти'
+  },
+  {
+    title:'Статистика',
+    description:'Статистика Check Brain надає детальну інформацію про ваші особисті досягнення та прогрес у розвитку. Користувачі можуть переглянути свої статистичні дані, такі як кількість завдань, які вони виконали, середній рейтинг результатів та порівнювати свої результати з іншими користувачами.',
+    path:'/Statistics',
+    linkName:'Переглянути статистику'
+  },
+];
 
 export default function Home() {
-  return <>
-    <Dashboard></Dashboard>
-  </>;
+  return (
+    <>
+      <Header />
+
+      <main className="home__page">
+        {sectionsInfo_UA.map((section) => (
+          <section key={section.id}>
+            <h2>{section.title}</h2>
+            <p>{section.description}</p>
+            <Link href={section.path}>
+      {section.linkName}
+      </Link>
+          </section>
+
+        ))}
+      </main>
+      <Footer/> 
+    </>
+  );
 }

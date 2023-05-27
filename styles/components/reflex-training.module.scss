@@ -1,0 +1,57 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  h2{
+    font-weight: 400;
+  }
+  button {
+    font-size: 1.5rem;
+    padding: 5px 25px;
+  }
+}
+.testContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 100%;
+  background-color: #f9f9f9;
+  position: relative;
+  border: 1px solid gray;
+border-left: 0px;
+border-right: 0px;
+  margin: 0 auto;
+}
+.testOverContainer {
+  display: flex;
+  gap: 25px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+}
+.statisticTitle {
+  color: #ff6600;
+}
+
+.mole {
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+}
+
+.testFooter {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  align-items: center;
+  padding: 25px 0px;
+  div {
+    text-align: center;
+  }
+}

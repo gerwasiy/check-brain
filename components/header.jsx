@@ -1,4 +1,4 @@
-import styles from "../styles/components/header.module.css";
+import styles from "../styles/components/header.module.scss";
 import logo from "../public/logo.svg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,18 +7,25 @@ import Link from "next/link";
 import Image from "next/image";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-export default function Header() {
+export default function Header({
+  leftNavName,
+  leftNavIcon,
+  rightNavIcon,
+  rightNavName,
+  leftNavPath,
+  rightNavPath,
+}) {
   return (
-    <header className={styles.container}>
-      <Link className={styles.navigationEl} href="/">
-        <FontAwesomeIcon icon={faHouse} />
-        <span>Home</span>
+    <header className={styles.header__container}>
+      <Link className={styles.header__navigationEl} href={leftNavPath || "/"}>
+        <FontAwesomeIcon icon={leftNavIcon || faHouse} />
+        <span>{leftNavName || "Home"}</span>
       </Link>
 
-      <h1 className={styles.title}>
+      <h1 className={styles.header__title}>
         Check
         <Image
-          className={styles.logo}
+          className={styles.header__logo}
           alt="logo"
           width={100}
           height={100}
@@ -26,9 +33,13 @@ export default function Header() {
         />
         Brain
       </h1>
-      <Link className={styles.navigationEl} href="/Profile">
-        <FontAwesomeIcon icon={faUser} />
-        <span>Profile</span></Link>
+      <Link
+        className={styles.header__navigationEl}
+        href={rightNavPath || "/Profile"}
+      >
+        <FontAwesomeIcon icon={rightNavIcon || faUser} />
+        <span>{rightNavName || "Profile"}</span>
+      </Link>
     </header>
   );
 }

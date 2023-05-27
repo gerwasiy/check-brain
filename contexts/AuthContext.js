@@ -11,8 +11,14 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
 
-  function signup(email, password) {
+  function signup(username, email, password) {
     return fb.createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      return user.updateProfile({
+        displayName: username
+      });
+    });
   }
 
   function login(email, password) {

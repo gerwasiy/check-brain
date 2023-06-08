@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import { useAuth } from "../contexts/AuthContext"
 import Link from "next/link"
-
+import styles from "../styles/components/auth.module.scss";
 
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -28,7 +28,7 @@ export default function ForgotPassword() {
 
   return (
     <>
-        <div className="form-container">
+        <div className={styles.auth__form__container}>
           <h2>Password Reset</h2>
           {error && alert(error)}
           {message && confirm(message)}

@@ -50,11 +50,11 @@ export default function UpdateProfile() {
     <Header/>
 
       <div className={styles.auth__form__container} style={{height:'70vh', background:'linear-gradient(0deg, #e3e3e3, white)'}}>
-        <h2>Update Profile</h2>
+        <h2>Оновлення даних</h2>
         {error && alert(error)}
         <form onSubmit={handleSubmit} >
           <div id="email">
-            <label>Email</label>
+            <label>Пошта</label>
             <input
               type="email"
               ref={emailRef}
@@ -64,7 +64,7 @@ export default function UpdateProfile() {
             />
           </div>
           <div id="username">
-            <label>Username</label>
+            <label>Нікнейм</label>
             <input
               type="text"
               ref={usernameRef}
@@ -74,7 +74,7 @@ export default function UpdateProfile() {
             />
           </div>
           <div id="password">
-            <label>Password</label>
+            <label>Пароль</label>
             <input
               type="password"
               ref={passwordRef}
@@ -82,7 +82,7 @@ export default function UpdateProfile() {
             />
           </div>
           <div id="password-confirm">
-            <label>Password Confirmation</label>
+            <label>Підтвердження пароля</label>
             <input
               type="password"
               ref={passwordConfirmRef}
@@ -90,12 +90,12 @@ export default function UpdateProfile() {
             />
           </div>
           <button disabled={loading} type="submit">
-            Update
+            Оновити
           </button>
         </form>
 
         <div>
-          <Link href="/Profile">Cancel</Link>
+          <Link href="/Profile">Скасувати</Link>
         </div>
       </div>
   

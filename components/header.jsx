@@ -19,7 +19,7 @@ export default function Header({
     <header className={styles.header__container}>
       <Link className={styles.header__navigationEl} href={leftNavPath || "/"}>
         <FontAwesomeIcon icon={leftNavIcon || faHouse} />
-        <span>{leftNavName || "Home"}</span>
+        <span>{leftNavName || "Головна"}</span>
       </Link>
 
       <h1 className={styles.header__title}>
@@ -38,7 +38,7 @@ export default function Header({
         href={rightNavPath || "/Profile"}
       >
         <FontAwesomeIcon icon={rightNavIcon || faUser} />
-        <span>{rightNavName || "Profile"}</span>
+        <span>{rightNavName || "Профіль"}</span>
       </Link>
     </header>
   );

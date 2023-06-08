@@ -1,0 +1,29 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding:0 15%;
+    height: 70vh;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    p{
+        text-align: justify;
+        &::first-letter{
+            padding-left: 1.5rem;
+        }
+    }
+  
+  }
+  
+  

@@ -8,17 +8,19 @@ import Footer from "../../components/footer";
 import { faBrain } from "@fortawesome/free-solid-svg-icons";
 
 
+
 export default function ReflexTraining() {
-  const defaultTime = 3;
+  const defaultTime = 30;
   const defaultScore = 0;
-  const {currentUser} = useAuth();
+  const {currentUser, maxReflexTrainingScore, uploadReflexTrainingScore} = useAuth();
   const [count, setCount] = useState(defaultScore);
   const [timeLeft, setTimeLeft] = useState(defaultTime);
   const [timerId, setTimerId] = useState(null);
   const [testOver, setTestOver] = useState(false);
   const [startTestBtn, setStartTestBtn] = useState(false);
+  const [bestScore, setBestScore] = useState(null);
   const moleRef = useRef(null);
-  let testResult = null;
+  let testResult
 
   function randomLocation() {
     let x = Math.floor(Math.random() * window.innerWidth * 0.8);
@@ -54,10 +56,15 @@ export default function ReflexTraining() {
   }
 
   useEffect(() => {
+    maxReflexTrainingScore(currentUser.displayName).then((score) => {
+      setBestScore(score);
+    });
+    uploadReflexTrainingScore(currentUser.displayName,count)
     if (testOver) {
       clearInterval(timerId);
+      
     }
-  }, [timerId, testOver]);
+  }, [timerId, testOver, maxReflexTrainingScore, currentUser, uploadReflexTrainingScore,count]);
 
   let OnClickHandler = function (e) {
     e.preventDefault();
@@ -83,7 +90,7 @@ export default function ReflexTraining() {
             Congratulate {currentUser.displayName}
           </h3>
           <div>Your final score is {count}.</div>
-          <div>Your best score is {count}.</div>
+          {bestScore && <div>Your best score is {bestScore}.</div>}
         </div>
         <div className={styles.allStatistic}>
           <h3 className={styles.statisticTitle}>Top 10 users</h3>
@@ -91,11 +98,12 @@ export default function ReflexTraining() {
         </div>
       </div>    
     );
+    
   }
 
   return (
     <PrivateRoute>
-       <Header leftNavIcon={faBrain} leftNavName={'Tests'} leftNavPath={'/tests'}/>
+       <Header leftNavIcon={faBrain} leftNavName={'Тести'} leftNavPath={'/tests'}/>
 
       <div className={styles.page}>
         <h2>
@@ -113,7 +121,7 @@ export default function ReflexTraining() {
             </button>
           ) : (
             <button onClick={OnClickHandler} className={styles.startTestBtn}>
-              Start Test
+             Розпочати
             </button>
           )}
           <div className={styles.timer}>Time left: {timeLeft}s</div>

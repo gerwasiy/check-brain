@@ -4,19 +4,21 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import styles from "../styles/components/auth.module.scss";
 
+
 export default function Signup() {
+
   const emailRef = useRef();
   const usernameRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { signup, saveUsername } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   async function handleSubmit(e) {
     e.preventDefault();
-    router.push("/Profile");
+    router.push("/");
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
     }
@@ -24,6 +26,7 @@ export default function Signup() {
     try {
       setError("");
       setLoading(true);
+      saveUsername(usernameRef.current.value,usernameRef.current.value)
       await signup(
         usernameRef.current.value,
         emailRef.current.value, 
@@ -32,7 +35,6 @@ export default function Signup() {
     } catch {
       setError("Failed to create an account");
     }
-
     setLoading(false);
   }
 

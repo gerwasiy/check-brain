@@ -62,7 +62,7 @@
     width: 70%;
     height: 90%;
     top: 50px;
-    left: 400px;
+    left: 25%;
     background-image: url('../../public/logo.svg');
     background-size: 100vh;
     background-repeat: no-repeat;
@@ -81,4 +81,10 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
   gap: 15px;
+}
+
+@media (max-width: 1250px) {
+  .auth__bg::before{
+    display: none;
+  }
 }

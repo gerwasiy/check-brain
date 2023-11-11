@@ -62,3 +62,17 @@
     font-weight: 500;
   }
 }
+
+@media (max-width: 880px) {
+  .resultsGrade{
+    ul{
+      width: 80%;
+    }
+    li{
+      display: flex;
+   span{
+    min-width: max-content;
+   }
+    }
+  }
+}

@@ -26,4 +26,9 @@
   
   }
   
-  
+  @media (max-width: 850px) {
+    .container{
+  height: 100%;
+  margin-bottom: 16vh;
+    }
+  }

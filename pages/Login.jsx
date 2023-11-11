@@ -51,6 +51,9 @@ export default function Login() {
           <div>
             Need an account? <Link href="/Signup">Sign Up</Link>
           </div>
+          <div>
+            Back to <Link href="/">Home</Link>
+          </div>
         </div>
       </div>
     </div>
